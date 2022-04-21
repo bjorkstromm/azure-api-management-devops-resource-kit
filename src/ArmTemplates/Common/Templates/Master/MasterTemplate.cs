@@ -10,11 +10,9 @@ using Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Templates.Abs
 
 namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Templates.Master
 {
-    public class MasterTemplateProperties
+    public class MasterTemplate
     {
-        public string Mode { get; set; }
-        public MasterTemplate Template { get; set; }
-        public MasterTemplateLink TemplateLink { get; set; }
-        public Dictionary<string, TemplateParameterProperties> Parameters { get; set; }
+        public string ContentVersion { get; set; }
+        public TemplateResource[] Resources { get; set; }
     }
 }

@@ -357,7 +357,12 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Template
 
         public static string MakeResourceName(APIConfig api)
         {
-            return $"[concat(parameters('{ParameterNames.ApimServiceName}'), '/{api.name}')]";
+            return MakeResourceName(api.name);
+        }
+
+        public static string MakeResourceName(string apiName)
+        {
+            return $"[concat(parameters('{ParameterNames.ApimServiceName}'), '/{apiName}')]";
         }
 
         public string[] CreateProtocols(APIConfig api)

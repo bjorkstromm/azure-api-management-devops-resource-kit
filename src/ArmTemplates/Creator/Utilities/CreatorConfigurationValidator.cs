@@ -161,11 +161,6 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Utilitie
                 isValid = false;
                 throw new CreatorConfigurationIsInvalidException("APIM service name is required");
             }
-            if (this.creatorConfig.linked == true && this.creatorConfig.linkedTemplatesBaseUrl == null)
-            {
-                isValid = false;
-                throw new CreatorConfigurationIsInvalidException("LinkTemplatesBaseUrl is required for linked templates");
-            }
             return isValid;
         }
 
