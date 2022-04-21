@@ -34,5 +34,8 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Commands.Configu
 
         [Option(longName: "parameterizeNamedValuesAndSecrets", HelpText = "Allows Creator to parameterize NamedValues and KeyVault Secrets. Output ARM Template then can be deployed to multiple environments")]
         public string ParameterizeNamedValues { get; set; }
+
+        [Option(longName: "parameterizeBackendUrls", HelpText = "Allows Creator to parameterize Backend URLs. Output ARM Template then can be deployed to multiple environments")]
+        public string ParameterizeBackendUrls { get; set; }
     }
 }

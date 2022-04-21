@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Models
 
         public bool parameterizeNamedValues { get; set; }
         public List<ServiceUrlProperty> serviceUrlParameters { get; set; }
+        public bool parameterizeBackendUrls { get; set; }
     }
 
     public class APIVersionSetConfig : ApiVersionSetProperties

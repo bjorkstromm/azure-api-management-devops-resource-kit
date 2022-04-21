@@ -104,6 +104,11 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Template
             {
                 string backendsUri = this.GenerateLinkedTemplateUri(creatorConfig, fileNames.Backends);
                 resources.Add(this.CreateLinkedMasterTemplateResource("backendsTemplate", backendsTemplate, backendsUri, new string[] { }, null, false));
+
+                foreach (var parameter in backendsTemplate.Parameters)
+                {
+                    masterTemplate.Parameters[parameter.Key] = parameter.Value;
+                }
             }
 
             // authorizationServer

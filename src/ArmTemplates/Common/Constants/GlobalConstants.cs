@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Constants
         public const string LinkedTemplatesBaseUrl = "linkedTemplatesBaseUrl";
         public const string NamedValueKeyVaultSecrets = "namedValueKeyVaultSecrets";
         public const string BackendSettings = "backendSettings";
+        public const string BackendUrls = "backendUrls";
     }
 
     public static class ParameterPrefix

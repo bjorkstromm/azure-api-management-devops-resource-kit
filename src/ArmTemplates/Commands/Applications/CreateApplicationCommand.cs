@@ -84,6 +84,12 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Commands.Applica
                 creatorConfig.parameterizeNamedValues = true;
             }
 
+            //if parameterizeBackendUrls passed as parameter
+            if (!string.IsNullOrEmpty(configuration.ParameterizeBackendUrls))
+            {
+                creatorConfig.parameterizeBackendUrls = true;
+            }
+
             //if backendurlfile passed as parameter
             if (configuration.BackendUrlConfigFile != null && !string.IsNullOrEmpty(configuration.BackendUrlConfigFile))
             {

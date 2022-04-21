@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Constants;
+using Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Extensions;
 using Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Templates.Abstractions;
 using Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Templates.Backend;
 using Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.Templates.Builders.Abstractions;
@@ -32,9 +33,20 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Template
                 { ParameterNames.ApimServiceName, new TemplateParameterProperties(){ Type = "string" } }
             };
 
+            if (creatorConfig.parameterizeBackendUrls)
+            {
+                backendTemplate.Parameters.Add(ParameterNames.BackendUrls, new TemplateParameterProperties { Type = "object" });
+            }
+
             List<TemplateResource> resources = new List<TemplateResource>();
             foreach (BackendTemplateProperties backendTemplatePropeties in creatorConfig.backends)
             {
+                if (creatorConfig.parameterizeBackendUrls)
+                {
+                    backendTemplatePropeties.Url =
+                        $"[parameters('{ParameterNames.BackendUrls}').{ParameterNamingHelper.GenerateValidParameterName(backendTemplatePropeties.Title, ParameterPrefix.Property)}]";
+                }
+
                 // create backend resource with properties
                 BackendTemplateResource backendTemplateResource = new BackendTemplateResource()
                 {

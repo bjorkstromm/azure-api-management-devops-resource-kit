@@ -2,7 +2,7 @@
   "profiles": {
     "apimtemplate": {
       "commandName": "Project",
-      "commandLineArgs": "create --configFile config.yml --parameterizeNamedValuesAndSecrets true",
+      "commandLineArgs": "create --configFile config.yml --parameterizeNamedValuesAndSecrets true --parameterizeBackendUrls true",
       "workingDirectory": "C:\\src\\demo\\azure-api-management-devops-resource-kit\\sample-demo\\creator-in"
     }
   }
