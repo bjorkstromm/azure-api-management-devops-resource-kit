@@ -284,6 +284,7 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Template
                     },
                     Template = !string.IsNullOrEmpty(uriLink) ? null : new MasterTemplate()
                     {
+                        Schema = "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                         Resources = template.Resources,
                         ContentVersion = "1.0.0.0"
                     },
@@ -398,6 +399,8 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Template
             // used to create the parameter values for use in parameters file
             // create empty template
             Template masterTemplate = this.templateBuilder.GenerateEmptyTemplate().Build();
+            masterTemplate.Schema = "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#";
+            masterTemplate.Resources = null;
 
             // add parameters with value property
             Dictionary<string, TemplateParameterProperties> parameters = new Dictionary<string, TemplateParameterProperties>();
@@ -406,7 +409,7 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Creator.Template
                 Value = creatorConfig.apimServiceName
             };
             parameters.Add(ParameterNames.ApimServiceName, apimServiceNameProperties);
-            if (creatorConfig.linked == true)
+            if (creatorConfig.linked == true && !string.IsNullOrEmpty(creatorConfig.linkedTemplatesBaseUrl))
             {
                 TemplateParameterProperties linkedTemplatesBaseUrlProperties = new TemplateParameterProperties()
                 {

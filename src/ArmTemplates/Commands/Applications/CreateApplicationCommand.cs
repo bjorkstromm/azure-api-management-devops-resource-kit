@@ -205,6 +205,13 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Commands.Applica
 
             // create parameters file
             Template templateParameters = masterTemplateCreator.CreateMasterTemplateParameterValues(creatorConfig);
+            foreach (var parameter in backendsTemplate.Parameters.Concat(propertyTemplate.Parameters))
+            {
+                templateParameters.Parameters.TryAdd(parameter.Key, new TemplateParameterProperties
+                {
+                    Value = string.Empty
+                });
+            }
 
             // write templates to outputLocation
             if (creatorConfig.linked == true)

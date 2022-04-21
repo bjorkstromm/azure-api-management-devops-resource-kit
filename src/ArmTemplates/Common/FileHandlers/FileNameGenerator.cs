@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ApiManagement.ArmTemplates.Common.FileHandl
                 Gateway = $@"{baseFileName}gateways.template.json",
                 GatewayApi = $@"{baseFileName}gateways-apis.template.json",
                 TagApi = $@"{baseFileName}apiTags.template.json",
-                Parameters = $@"{baseFileName}parameters.json",
+                Parameters = $@"{baseFileName}master.parameters.json",
                 LinkedMaster = $@"{baseFileName}master.template.json",
                 Apis = "/Apis",
                 SplitAPIs = "/SplitAPIs",
